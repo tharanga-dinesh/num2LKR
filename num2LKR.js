@@ -63,7 +63,18 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
             }
 
             return this.each(function(){
-                $(this).val('dummy text');
+                var obj = $(this);
+                var input = $('input[type="text"]', obj)
+                
+                input.change(function () {
+                   var inputValue = input.val();
+                   if (isNaN(input)) {
+                       return;
+                   }
+                   
+                   var numbersToLKRWord = new numbersToLKRWord();
+                   var LKRWord = numbersToLKRWord.numberInLKRWord(inputValue)
+                });
             });   
         }
     });
